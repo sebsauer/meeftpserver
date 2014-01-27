@@ -1,0 +1,36 @@
+Name: meeftpserver
+Summary: FTP Server
+Version: 2.3
+Release: 1
+Group: Qt/Qt
+URL: http://code.google.com/p/meeftpserver/
+License: LGPLv2.1
+Sources:
+- '%{name}-%{version}.tar.bz2'
+Description: |-
+  FTP server to enable remote access to the file-system.
+
+  The FTP server makes a defined directory available with the FTP protocol. A FTP client running on another computer can connect with the FTP server and download, upload or delete files on the FTP server.
+
+  Password-protected read-write and/or anonymous read-only access are possible. FTP and SFTP (secure TLS/SSLv3 encryption) are supported. The server can be configured, started and stopped from a simple UI or via commandline.
+Configure: none
+Builder: qtc5
+PkgConfigBR:
+- sailfishapp >= 0.0.10
+- Qt5Core
+- Qt5Qml
+- Qt5Quick
+Requires:
+- python >= 2.7
+- sailfishsilica-qt5 >= 0.10.9
+Files:
+- /usr/share/icons/hicolor/86x86/apps
+- /usr/share/applications
+- /usr/share/meeftpserver
+- /usr/bin
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/%{name}/qml'
+- '%{_datadir}/%{name}/server'
+- '%{_bindir}'
+PkgBR: []

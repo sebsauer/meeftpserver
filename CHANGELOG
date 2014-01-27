@@ -1,0 +1,47 @@
+meeftpserver (2.1) unstable; urgency=low
+
+  * Re-add auto-online and SFTP support.
+  * Various bugfixes.
+
+ -- Sebastian Sauer <sebastian.sauer@kdab.com>  Tue, 1 Jan 2014 20:16:40 +0200
+
+meeftpserver (2.0) unstable; urgency=low
+
+  * Port to SailfishOS using Qt5 and Silica components.
+
+ -- Sebastian Sauer <sebastian.sauer@kdab.com>  Tue, 31 Dec 2013 20:16:40 +0200
+
+meeftpserver (1.0.4) unstable; urgency=low
+
+  * Improve error handling
+  * Improve icon to look more n9-ish
+
+ -- Sebastian Sauer <sebastian.sauer@kdab.com>  Tue, 08 Mar 2012 20:16:40 +0200
+
+meeftpserver (1.0.3) unstable; urgency=low
+
+  * Fix disable "Enable SFTP" when OpenSSL is not available cause its needed to create the initial PEM-certificate. Patches to use aegis-certman instead are welcome :)
+  * Fix better handle the case when creating the initial PEM-certificate fails.
+  * Improve status-feedback on start/stop/error
+
+ -- Sebastian Sauer <sebastian.sauer@kdab.com>  Tue, 21 Apr 2012 20:16:40 +0200
+
+meeftpserver (1.0.2) unstable; urgency=low
+
+  * Add support for TLS/SSLv3 encrypted connections.
+  * Add and use possibility to use stdin/stdout to control the server.
+
+ -- Sebastian Sauer <sebastian.sauer@kdab.com>  Tue, 20 Apr 2012 20:16:40 +0200
+
+meeftpserver (1.0.1) unstable; urgency=low
+
+  * Fix potential crash on exit.
+  * Fix anonymous login did not work as expected.
+
+ -- Sebastian Sauer <sebastian.sauer@kdab.com>  Tue, 19 Apr 2012 20:16:40 +0200
+
+meeftpserver (1.0.0) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Sebastian Sauer <sebastian.sauer@kdab.com>  Tue, 17 Apr 2012 20:16:40 +0200
