@@ -1,3 +1,11 @@
+meeftpserver (2.3) unstable; urgency=low
+
+  * Add support for creating self-signed certificates.
+  * Various bugfixes.
+  * Moved to github and published at openrepos.net.
+
+ -- Sebastian Sauer <sebastian.sauer@kdab.com>  Tue, 28 Jan 2014 20:16:40 +0200
+
 meeftpserver (2.1) unstable; urgency=low
 
   * Re-add auto-online and SFTP support.
