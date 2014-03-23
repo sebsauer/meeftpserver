@@ -21,12 +21,15 @@
 #define NETWORK_H
 
 #include <QObject>
+#include <QStringList>
 #include <QNetworkConfigurationManager>
 #include <QNetworkSession>
+#include <QNetworkInterface>
 
 class Network : public QObject
 {
     Q_OBJECT
+
 public:
     explicit Network(QObject *parent = 0);
 
@@ -42,6 +45,8 @@ Q_SIGNALS:
 public Q_SLOTS:
     void openSession();
     void closeSession();
+
+    QStringList runningInterfaceAddresses() const;
 
 private Q_SLOTS:
     void slotOnlineChanged();

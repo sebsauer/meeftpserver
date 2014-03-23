@@ -101,19 +101,23 @@ def createSelfSignedCertificate():
     cert.set_pubkey(k)
     cert.sign(k, 'sha1')
 
+    old_umask = os.umask(077)
     try:
-        kf = open(keyfile, "wt")
-        kf.write(crypto.dump_privatekey(crypto.FILETYPE_PEM, k))
-    except:
-        exc_type, exc_value, exc_tb = sys.exc_info()
-        raise TypeError("Failed write key file '%s'.\n%s" % (keyfile,exc_value))
+        try:
+            kf = open(keyfile, "wt", 0600)
+            kf.write(crypto.dump_privatekey(crypto.FILETYPE_PEM, k))
+        except:
+            exc_type, exc_value, exc_tb = sys.exc_info()
+            raise TypeError("Failed write key file '%s'.\n%s" % (keyfile,exc_value))
 
-    try:
-        cf = open(certfile, "wt")
-        cf.write(crypto.dump_certificate(crypto.FILETYPE_PEM, cert))
-    except:
-        exc_type, exc_value, exc_tb = sys.exc_info()
-        raise TypeError("Failed write cert file '%s'.\n%s" % (certfile,exc_value))
+        try:
+            cf = open(certfile, "wt", 0600)
+            cf.write(crypto.dump_certificate(crypto.FILETYPE_PEM, cert))
+        except:
+            exc_type, exc_value, exc_tb = sys.exc_info()
+            raise TypeError("Failed write cert file '%s'.\n%s" % (certfile,exc_value))
+    finally:
+        os.umask(old_umask)
 
 def main():
     # There are two ways the default configuration from above can be modifed.

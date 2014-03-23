@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Name=meeftpserver
+Name=FTP Server
 Icon=meeftpserver
 Exec=meeftpserver

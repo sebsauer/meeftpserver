@@ -326,7 +326,7 @@ Page {
             Settings.setValue("serverTlsCertFile", "") // e.g. '/etc/ssl/certs/sailfish-ca.pem'
             Settings.setValue("serverTlsKeyFile", "")
             Settings.setValue("tlsControlChannel", true)
-            Settings.setValue("tlsDataChannel", false)
+            Settings.setValue("tlsDataChannel", true)
 
             // Save those default values asap.
             Settings.saveChanges()
@@ -343,8 +343,8 @@ Page {
         tlsCheckbox.checked = Settings.value("serverTlsEnabled", false)
         tlsCertFileEdit.text = Settings.value("serverTlsCertFile")
         tlsKeyFileEdit.text = Settings.value("serverTlsKeyFile")
-        tlsControlCheckbox.checked = Settings.value("tlsControlChannel", false)
-        tlsDataCheckbox.checked = Settings.value("tlsDataChannel", false)
+        tlsControlCheckbox.checked = Settings.value("tlsControlChannel", true)
+        tlsDataCheckbox.checked = Settings.value("tlsDataChannel", true)
 
         // Connect the changed-signals from the edit-fields to
         // save modifications to the settings back.

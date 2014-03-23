@@ -102,10 +102,10 @@ Page {
                         args.push("tlspem=" + tlspem)
                 }
 
-                var tlscontrol = Settings.value("tlsControlChannel", false)
+                var tlscontrol = Settings.value("tlsControlChannel", true)
                 if (tlscontrol !== null && tlscontrol !== undefined && tlscontrol)
                     args.push("tlscontrol=" + tlscontrol)
-                var tlsdata = Settings.value("tlsDataChannel", false)
+                var tlsdata = Settings.value("tlsDataChannel", true)
                 if (tlsdata !== null && tlsdata !== undefined && tlsdata)
                     args.push("tlsdata=" + tlsdata)
             }
@@ -119,10 +119,20 @@ Page {
 
         onStarted: {
             console.log("ftpServer.onStarted")
-            mainPage.addLog(qsTr("FTP Server running\n"))
+            mainPage.addLog(qsTr("FTP Server running\n\n"))
+
             ftpServer.sendConfigs()
+
             if (Settings.value("autoOnline", false)) {
                 Network.openSession()
+            }
+
+            var addresslist = []
+            var port = Settings.value("serverPort", "2121")
+            var addresses = Network.runningInterfaceAddresses()
+            for(var i in addresses) addresslist.push(addresses[i] + ":" + port)
+            if (addresslist.length > 0) {
+                mainPage.addLog("    * " + addresslist.join("\n    * ") + "\n\n")
             }
         }
         onStopped: {
@@ -139,15 +149,9 @@ Page {
         }
     }
 
-    PageHeader {
-        id: pageHeader
-        anchors { left: parent.left; right: parent.right; top: parent.top; }
-        title: "FTP Server"
-    }
-
     PageStack {
         id: centralPageStack
-        anchors { left: parent.left; right: parent.right; top: pageHeader.bottom; bottom: parent.bottom; margins: Theme.paddingMedium; }
+        anchors { left: parent.left; right: parent.right; top: parent.top; bottom: parent.bottom; margins: Theme.paddingMedium; }
 
         Page {
             id: centralPage

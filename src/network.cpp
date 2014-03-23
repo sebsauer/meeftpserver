@@ -42,6 +42,25 @@ Network* Network::instance()
     return network;
 }
 
+QStringList Network::runningInterfaceAddresses() const
+{
+    QStringList result;
+    QList<QNetworkInterface> ifaces = QNetworkInterface::allInterfaces();
+    Q_FOREACH(const QNetworkInterface &iface, ifaces) {
+        if (iface.flags().testFlag(QNetworkInterface::IsRunning)) {
+            QList<QNetworkAddressEntry> entries = iface.addressEntries();
+            Q_FOREACH(const QNetworkAddressEntry &entry, entries) {
+                QHostAddress a = entry.ip();
+                if (a.isNull()) continue;
+                if (a.protocol() == QAbstractSocket::IPv6Protocol) continue;
+                //if (!(f & QNetworkInterface::IsLoopBack) && a.isLoopback()) continue;
+                result.append(a.toString());
+            }
+        }
+    }
+    return result;
+}
+
 void Network::openSession()
 {
     qDebug() << Q_FUNC_INFO;

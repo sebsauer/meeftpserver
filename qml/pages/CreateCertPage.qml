@@ -69,9 +69,11 @@ Page {
 
             Label {
                 id: errorLabel
+                width: createCertPage.width
                 visible: text.length > 0
                 color: Theme.highlightColor
                 font.bold: true
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: ''
             }
 
