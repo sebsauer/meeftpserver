@@ -1,3 +1,14 @@
+meeftpserver (2.4) unstable; urgency=low
+
+  * Fix umask/chmod on created cert files
+  * Fix wrap-mode of error-label on create certificate
+  * Fix width of error-label on create certificate
+  * Print IP-addresses we potentially listen to
+  * Remove PageHader giving more vertical space
+  * Change tlsDataChannel to true as default
+
+ -- Sebastian Sauer <sebastian.sauer@kdab.com>  Tue, 23 Mar 2014 20:16:40 +0200
+ 
 meeftpserver (2.3) unstable; urgency=low
 
   * Add support for creating self-signed certificates.
